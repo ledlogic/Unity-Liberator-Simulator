@@ -15,37 +15,29 @@ public class TransformFollow : MonoBehaviour
 	[SerializeField]
 	private bool lookAt = true;
 
-	private void Update()
+	private void Update ()
 	{
-		Refresh();
+		Refresh ();
 	}
 
-	public void Refresh()
+	public void Refresh ()
 	{
-		if(target == null)
-		{
-			Debug.LogWarning("Missing target ref !", this);
-
+		if (target == null) {
+			Debug.LogWarning ("Missing target ref !", this);
 			return;
 		}
 
 		// compute position
-		if(offsetPositionSpace == Space.Self)
-		{
-			transform.position = target.TransformPoint(offsetPosition);
-		}
-		else
-		{
+		if (offsetPositionSpace == Space.Self) {
+			transform.position = target.TransformPoint (offsetPosition);
+		} else {
 			transform.position = target.position + offsetPosition;
 		}
 
 		// compute rotation
-		if(lookAt)
-		{
-			transform.LookAt(target);
-		}
-		else
-		{
+		if (lookAt) {
+			transform.LookAt (target);
+		} else {
 			transform.rotation = target.rotation;
 		}
 	}
